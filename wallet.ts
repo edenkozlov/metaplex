@@ -28,18 +28,3 @@ fs.writeFile('secret.json', secret, 'utf8', function(err) {
   console.log('Wrote secret key to secret.json.');
 });
 
-//STEP 5 - Airdrop 1 SOL to new wallet
-(async() => {
-  const signature = solanaConnection.requestAirdrop(
-    keypair.publicKey,
-    LAMPORTS_PER_SOL,
-  );
-  try{
-    const txId = await signature;
-    console.log(`Airdrop Transaction Id: ${txId}`);
-    console.log(`https://explorer.solana.com/tx/${txId}?cluster=devnet`)
-  }
-  catch(err){
-    console.log(err);
-  }
-})()
